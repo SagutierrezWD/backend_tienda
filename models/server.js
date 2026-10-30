@@ -1,6 +1,7 @@
 import express from "express"
 import "dotenv/config"
 import cors from "cors"
+import router from "../routes/users.js";
 
 class Server {
     constructor() {
@@ -9,39 +10,41 @@ class Server {
 
         this.middlewares()
 
-        this.routes()
+        // this.routes()
+        this.usuariosPath = "/api/usuarios"
     }
 
     routes() {
-        this.app.get(`/test`, (req, res) => {
-            res.send({
-                message: "Hola mundo desde el servidor"
-            })
-        })
+        this.app.use(this.usuariosPath, router)
+        // this.app.get(`/test`, (req, res) => {
+        //     res.send({
+        //         message: "Hola mundo desde el servidor"
+        //     })
+        // })
 
-        this.app.get(`/api`, (req, res) => {
-            res.send({
-                msg: "GET - Server"
-            })
-        })
+        // this.app.get(`/api`, (req, res) => {
+        //     res.send({
+        //         msg: "GET - Server"
+        //     })
+        // })
 
-        this.app.post(`/api`, (req, res) => {
-            res.send({
-                msg: "POST - Server"
-            })
-        })
+        // this.app.post(`/api`, (req, res) => {
+        //     res.send({
+        //         msg: "POST - Server"
+        //     })
+        // })
         
-        this.app.put(`/api`, (req, res) => {
-            res.send({
-                msg: "PUT - Server"
-            })
-        })
+        // this.app.put(`/api`, (req, res) => {
+        //     res.send({
+        //         msg: "PUT - Server"
+        //     })
+        // })
         
-        this.app.delete(`/api`, (req, res) => {
-            res.send({
-                msg: "DELETE - Server"
-            })
-        })
+        // this.app.delete(`/api`, (req, res) => {
+        //     res.send({
+        //         msg: "DELETE - Server"
+        //     })
+        // })
     }
 
     // Método 3 de mi clase Server
